@@ -1,0 +1,29 @@
+<h3>Shopping Cart</h3>
+
+
+
+<div *ngIf="items.length === 0" class="alert alert-info">Your Cart is Empty</div>
+<ul  *ngIf="items.length > 0" class="list-group">
+    <li class="list-group-item" *ngFor="let item of items">
+        <span>{{ item.name }}</span>
+        
+    <span> {{ item.price | currency}}</span>
+</ul>
+
+<form [formGroup] = "checkoutForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">
+            Name:
+        </label>
+        <input id="name" type="text" formControlName="name">
+    </div>
+    <div>
+        <label for="email">
+            Email:
+        </label>
+        <input id="email" type="email" formControlName="email">
+    </div>
+    
+    <button class="button" type="submit">Sumbit Purchase</button>
+
+</form>
